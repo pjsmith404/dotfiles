@@ -5,11 +5,11 @@ set -e
 SSH_DIR="$HOME/.ssh"
 
 if ! [ -x "$(command -v unzip)" ]; then
-	sudo pacman --noconfirm -S unzip
+	sudo pacman --noconfirm -Sy unzip
 fi
 
 if ! [ -x "$(command -v git)" ]; then
-	sudo pacman --noconfirm -S git
+	sudo pacman --noconfirm -Sy git
 fi
 
 git config --global init.defaultBranch "master"
@@ -18,7 +18,7 @@ git config --global user.email "pjsmith404@gmail.com"
 git config --global core.editor "vim --nofork"
 
 if ! [ -x "$(command -v vim)" ]; then
-	sudo pacman --noconfirm -S vim
+	sudo pacman --noconfirm -Sy vim
 	cp ../.vimrc "$HOME/.vimrc"
 fi
 
