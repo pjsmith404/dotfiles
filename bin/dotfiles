@@ -4,6 +4,8 @@ set -e
 
 SSH_DIR="$HOME/.ssh"
 
+sudo pacman -Syu
+
 if ! [ -x "$(command -v unzip)" ]; then
 	sudo pacman --noconfirm -Sy unzip
 fi
