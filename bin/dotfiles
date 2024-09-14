@@ -19,6 +19,7 @@ git config --global core.editor "vim --nofork"
 
 if ! [ -x "$(command -v vim)" ]; then
 	sudo pacman --noconfirm -S vim
+	cp ../.vimrc "$HOME/.vimrc"
 fi
 
 if ! [ -x "$(command -v 1password)" ]; then
