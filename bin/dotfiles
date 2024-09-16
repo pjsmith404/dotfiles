@@ -58,6 +58,10 @@ if ! [[ -f "$SSH_DIR/id_rsa" ]]; then
 	chmod 600 "$SSH_DIR/authorized_keys"
 fi
 
+if ! [[ -x "$(command -v make)" ]]; then
+	sudo pacman --noconfirm -Sy make
+fi
+
 if ! [[ -x "$(command -v docker)" ]]; then
 	sudo pacman --noconfirm -Sy docker
 	sudo systemctl enable --now docker
