@@ -9,6 +9,8 @@ source $VIMRUNTIME/defaults.vim
 
 set autoread
 
+set number
+
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
