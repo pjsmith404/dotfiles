@@ -15,7 +15,7 @@ if ! [ -x "$(command -v git)" ]; then
 fi
 
 git config --global init.defaultBranch "master"
-git config --global user.name "Pat Smith"
+git config --global user.name "pjsmith404"
 git config --global user.email "pjsmith404@gmail.com"
 git config --global core.editor "vim --nofork"
 
