@@ -10,6 +10,12 @@ if ! [ -x "$(command -v unzip)" ]; then
 	sudo pacman --noconfirm -Sy unzip
 fi
 
+if [[ -f "$HOME/.zshrc" ]]; then
+	echo "" >> "$HOME/.zshrc"
+	echo 'fpath=($HOME/.dotfiles/zshfunctions $fpath)' >> "$HOME/.zshrc"
+	echo 'autoload -U load_rsa' >> "$HOME/.zshrc"
+fi
+
 if ! [ -x "$(command -v git)" ]; then
 	sudo pacman --noconfirm -Sy git
 fi
