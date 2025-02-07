@@ -52,6 +52,7 @@ if ! [ -x "$(command -v op)" ]; then
 fi
 
 if ! [[ -f "$SSH_DIR/id_rsa" ]]; then
+	eval $(op signin)
 	mkdir -p "$SSH_DIR"
 
 	chmod 700 "$SSH_DIR"
