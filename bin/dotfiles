@@ -6,16 +6,22 @@ SSH_DIR="$HOME/.ssh"
 
 sudo pacman -Syu
 
+
+# Install unzip
 if ! [ -x "$(command -v unzip)" ]; then
 	sudo pacman --noconfirm -Sy unzip
 fi
 
+
+# Configure zsh
 if [[ -f "$HOME/.zshrc" ]]; then
 	echo "" >> "$HOME/.zshrc"
 	echo 'fpath=($HOME/.dotfiles/zshfunctions $fpath)' >> "$HOME/.zshrc"
 	echo 'autoload -U load_rsa' >> "$HOME/.zshrc"
 fi
 
+
+# Install Git
 if ! [ -x "$(command -v git)" ]; then
 	sudo pacman --noconfirm -Sy git
 fi
@@ -25,11 +31,15 @@ git config --global user.name "pjsmith404"
 git config --global user.email "pjsmith404@gmail.com"
 git config --global core.editor "vim --nofork"
 
+
+# Install Vim
 if ! [ -x "$(command -v vim)" ]; then
 	sudo pacman --noconfirm -Sy vim
 	cp "$PWD/.vimrc" "$HOME/.vimrc"
 fi
 
+
+# Install 1Password
 if ! [ -x "$(command -v 1password)" ]; then
 	curl -sSO https://downloads.1password.com/linux/tar/stable/x86_64/1password-latest.tar.gz
 	sudo tar -xf 1password-latest.tar.gz
@@ -51,6 +61,8 @@ if ! [ -x "$(command -v op)" ]; then
 	sudo chmod g+s /usr/local/bin/op
 fi
 
+
+# Configure SSH Key
 if ! [[ -f "$SSH_DIR/id_rsa" ]]; then
 	eval $(op signin)
 	mkdir -p "$SSH_DIR"
@@ -65,10 +77,14 @@ if ! [[ -f "$SSH_DIR/id_rsa" ]]; then
 	chmod 600 "$SSH_DIR/authorized_keys"
 fi
 
+
+# Install Make
 if ! [[ -x "$(command -v make)" ]]; then
 	sudo pacman --noconfirm -Sy make
 fi
 
+
+# Install Docker
 if ! [[ -x "$(command -v docker)" ]]; then
 	sudo pacman --noconfirm -Sy docker
 	sudo systemctl enable --now docker
