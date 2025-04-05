@@ -33,7 +33,7 @@ git config --global core.editor "vim --nofork"
 # Install Vim
 install_pacman_package vim
 
-cp "$PWD/.vimrc" "$HOME/.vimrc"
+cp -f "$PWD/.vimrc" "$HOME/.vimrc"
 
 
 # Install 1Password
