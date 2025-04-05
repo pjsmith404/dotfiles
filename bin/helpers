@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Helper functions
+
+# Check if a package is installed and install it with pacman
+install_pacman_package () {
+	local package=$1
+	if ! [ -x "$(command -v $package)" ]; then
+		sudo pacman --noconfirm -Sy $package
+	fi
+}

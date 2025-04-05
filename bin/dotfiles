@@ -2,15 +2,15 @@
 
 set -e
 
+source $(dirname "$0")/helpers
+
 SSH_DIR="$HOME/.ssh"
 
 sudo pacman -Syu
 
 
 # Install unzip
-if ! [ -x "$(command -v unzip)" ]; then
-	sudo pacman --noconfirm -Sy unzip
-fi
+install_pacman_package unzip
 
 
 # Configure zsh
@@ -22,9 +22,7 @@ fi
 
 
 # Install Git
-if ! [ -x "$(command -v git)" ]; then
-	sudo pacman --noconfirm -Sy git
-fi
+install_pacman_package git
 
 git config --global init.defaultBranch "master"
 git config --global user.name "pjsmith404"
@@ -33,10 +31,9 @@ git config --global core.editor "vim --nofork"
 
 
 # Install Vim
-if ! [ -x "$(command -v vim)" ]; then
-	sudo pacman --noconfirm -Sy vim
-	cp "$PWD/.vimrc" "$HOME/.vimrc"
-fi
+install_pacman_package vim
+
+cp "$PWD/.vimrc" "$HOME/.vimrc"
 
 
 # Install 1Password
@@ -79,13 +76,11 @@ fi
 
 
 # Install Make
-if ! [[ -x "$(command -v make)" ]]; then
-	sudo pacman --noconfirm -Sy make
-fi
+install_pacman_package make
 
 
 # Install Docker
-if ! [[ -x "$(command -v docker)" ]]; then
-	sudo pacman --noconfirm -Sy docker
-	sudo systemctl enable --now docker
-fi
+install_pacman_package docker
+
+sudo systemctl enable --now docker
+
