@@ -84,3 +84,9 @@ install_pacman_package docker
 
 sudo systemctl enable --now docker
 
+
+# Install uv
+if ! [ -x "$(command -v uv)" ]; then
+	curl -LsSf https://astral.sh/uv/install.sh | sh
+fi
+
