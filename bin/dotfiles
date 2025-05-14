@@ -19,6 +19,9 @@ sudo mount /mnt/nas
 # Install unzip
 install_pacman_package unzip
 
+# Install firefox
+install_pacman_package firefox
+
 # Configure zsh
 if [[ -f "$HOME/.zshrc" ]]; then
 	echo "" >> "$HOME/.zshrc"
