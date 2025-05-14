@@ -22,6 +22,9 @@ install_pacman_package unzip
 # Install firefox
 install_pacman_package firefox
 
+# Install arduino cli
+install_pacman_package arduino-cli
+
 # Configure zsh
 if [[ -f "$HOME/.zshrc" ]]; then
 	echo "" >> "$HOME/.zshrc"
