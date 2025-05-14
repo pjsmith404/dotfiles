@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 source $(dirname "$0")/helpers
 
@@ -9,9 +9,15 @@ SSH_DIR="$HOME/.ssh"
 sudo pacman -Syu
 
 
+# Mount home NAS
+mnt_dir="/mnt/nas/"
+mnt_str="192.168.1.4:/volume1/Data    $mnt_dir    nfs    defaults    0 0"
+mkdir -p "$mnt_dir"
+grep -Fxq "$mnt_str" /etc/fstab || echo "$mnt_str" | sudo tee -a /etc/fstab
+sudo mount /mnt/nas
+
 # Install unzip
 install_pacman_package unzip
-
 
 # Configure zsh
 if [[ -f "$HOME/.zshrc" ]]; then
