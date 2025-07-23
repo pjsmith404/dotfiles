@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -exuo pipefail
 
 source $(dirname "$0")/helpers
 
@@ -24,7 +24,7 @@ install_pacman_package firefox
 
 # Install Arduino
 install_pacman_package arduino-cli
-arduino-cli config init
+arduino-cli config init || true # quietly continue if a config already exists
 arduino-cli core update-index
 
 # Configure zsh
@@ -48,6 +48,10 @@ git config --global core.editor "vim --nofork"
 install_pacman_package vim
 
 cp -f "$PWD/.vimrc" "$HOME/.vimrc"
+
+
+# Install Terraform
+install_pacman_package terraform
 
 
 # Install 1Password
