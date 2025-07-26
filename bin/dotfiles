@@ -49,6 +49,10 @@ install_pacman_package vim
 
 cp -f "$PWD/.vimrc" "$HOME/.vimrc"
 
+mkdir -p ~/.vim/pack/tpope/start
+cd ~/.vim/pack/tpope/start
+git clone https://tpope.io/vim/fugitive.git
+vim -u NONE -c "helptags fugitive/doc" -c q
 
 # Install Terraform
 install_pacman_package terraform
