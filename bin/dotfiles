@@ -34,8 +34,8 @@ arduino-cli core update-index
 # Configure zsh
 if [[ -f "$HOME/.zshrc" ]]; then
 	echo "" >> "$HOME/.zshrc"
-	echo 'fpath=($HOME/.dotfiles/zshfunctions $fpath)' >> "$HOME/.zshrc"
-	echo 'autoload -U load_rsa' >> "$HOME/.zshrc"
+	grep -Fxq 'fpath=($HOME/.dotfiles/zshfunctions $fpath)' "$HOME/.zshrc" || echo 'fpath=($HOME/.dotfiles/zshfunctions $fpath)' >> "$HOME/.zshrc"
+	grep -Fxq 'autoload -U load_rsa' "$HOME/.zshrc" || echo 'autoload -U load_rsa' >> "$HOME/.zshrc"
 fi
 
 
@@ -63,6 +63,11 @@ fi
 
 # Install Terraform
 install_pacman_package terraform
+if [[ -f "$HOME/.zshrc" ]]; then
+	echo "" >> "$HOME/.zshrc"
+	grep -Fxq 'alias tf=terraform' "$HOME/.zshrc" || echo 'alias tf=terraform' >> "$HOME/.zshrc"
+fi
+
 
 
 # Install AWS CLI
