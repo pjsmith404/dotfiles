@@ -16,16 +16,20 @@ mkdir -p "$mnt_dir"
 grep -Fxq "$mnt_str" /etc/fstab || echo "$mnt_str" | sudo tee -a /etc/fstab
 sudo mount /mnt/nas
 
+
 # Install unzip
 install_pacman_package unzip
 
+
 # Install firefox
 install_pacman_package firefox
+
 
 # Install Arduino
 install_pacman_package arduino-cli
 arduino-cli config init || true # quietly continue if a config already exists
 arduino-cli core update-index
+
 
 # Configure zsh
 if [[ -f "$HOME/.zshrc" ]]; then
@@ -56,12 +60,16 @@ if [ ! -d "$HOME/.vim/pack/tpope/start/fugitive"]; then
 	vim -u NONE -c "helptags fugitive/doc" -c q
 fi
 
+
 # Install Terraform
 install_pacman_package terraform
 
 
 # Install AWS CLI
-install_pacman_package aws-cli-v2
+if ! [ -x "$(command -v aws)" ]; then
+	sudo pacman --noconfirm -Sy aws-cli-v2
+	aws configure sso
+fi
 
 
 # Install 1Password
