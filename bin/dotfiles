@@ -49,13 +49,19 @@ install_pacman_package vim
 
 cp -f "$PWD/.vimrc" "$HOME/.vimrc"
 
-mkdir -p ~/.vim/pack/tpope/start
-cd ~/.vim/pack/tpope/start
-git clone https://tpope.io/vim/fugitive.git
-vim -u NONE -c "helptags fugitive/doc" -c q
+if [ ! -d "$HOME/.vim/pack/tpope/start/fugitive"]; then
+	mkdir -p ~/.vim/pack/tpope/start
+	cd ~/.vim/pack/tpope/start
+	git clone https://tpope.io/vim/fugitive.git
+	vim -u NONE -c "helptags fugitive/doc" -c q
+fi
 
 # Install Terraform
 install_pacman_package terraform
+
+
+# Install AWS CLI
+install_pacman_package aws-cli-v2
 
 
 # Install 1Password
