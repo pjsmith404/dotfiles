@@ -63,10 +63,7 @@ fi
 
 # Install Terraform
 install_pacman_package terraform
-if [[ -f "$HOME/.zshrc" ]]; then
-	echo "" >> "$HOME/.zshrc"
-	grep -Fxq 'alias tf=terraform' "$HOME/.zshrc" || echo 'alias tf=terraform' >> "$HOME/.zshrc"
-fi
+install_pacman_package packer
 
 
 
