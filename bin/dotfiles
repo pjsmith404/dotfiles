@@ -73,6 +73,7 @@ if ! [ -x "$(command -v aws)" ]; then
 	aws configure sso
 fi
 
+install_pacman_package azure-cli
 
 # Install 1Password
 if ! [ -x "$(command -v 1password)" ]; then
