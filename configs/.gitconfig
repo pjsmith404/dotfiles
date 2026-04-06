@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = master
+[user]
+	name = pjsmith404
+	email = pjsmith404@gmail.com
+[core]
+	editor = vim --nofork
