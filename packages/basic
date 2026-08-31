@@ -5,6 +5,7 @@ docker
 docker-compose
 firefox
 git
+ghostty
 make
 packer
 terraform
